@@ -38,11 +38,11 @@ jobs:
           export TAG=${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPO_NAME }}/
 
       - name: Build image
-        run: docker build . --file Dockerfile --tag $TAG
+        run: docker build . --file Dockerfile --tag ${{ env.TAG }}
         working-directory: ./
 
       - name: Push image
-        run: docker push $TAG
+        run: docker push ${{ env.TAG }}
 
     # - uses: actions/checkout@v4
     # - name: Build the Docker image
