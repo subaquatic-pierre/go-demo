@@ -35,7 +35,7 @@ jobs:
 
       - name: "Build Image Tag with GAR URL"
         run: |-
-          echo TAG=${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPO_NAME }}/ >> $GITHUB_ENV
+          echo TAG=${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPO_NAME }} >> $GITHUB_ENV
 
       - name: Build image
         run: docker build . --file Dockerfile --tag ${{ env.TAG }}
