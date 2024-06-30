@@ -9,6 +9,7 @@ on:
 env:
   PROJECT_ID: kube-ci-cd-427615
   REGION: us-central1
+  APP_NAME: go-demo
   REPO_NAME: kube-ci-cd-go-demo
 
 jobs:
@@ -35,7 +36,7 @@ jobs:
 
       - name: "Build Image Tag with GAR URL"
         run: |-
-          echo TAG=${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPO_NAME }}:${{ github.sha }} >> $GITHUB_ENV
+          echo TAG=${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPO_NAME }}/${{ env.APP_NAME }}:${{ github.sha }} >> $GITHUB_ENV
 
       - name: Build image
         run: docker build . --file Dockerfile --tag ${{ env.TAG }}
